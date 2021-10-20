@@ -1,4 +1,8 @@
 # Team Profile Generator
+
+https://youtu.be/0kvmInQ0n2E
+
+
 ## Description
 Allows team leaders to generate profiles for all memebrs of a project
 ## Table of Contents:
