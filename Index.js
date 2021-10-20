@@ -93,32 +93,32 @@ function mainMenu(){
         },
     ])
     .then((response) => {
-        team.push(new Intern(response.manName, response.id, response.email, response.github));
+        team.push(new Engineer(response.manName, response.id, response.email, response.github));
         mainMenu();
         return;
     });
     }
 
     function createPage(){
-        var teamSec;
+        var teamSec = "";
         for(var i = 0; i < team.length; i++){
-            if(team[0].getRole() == "Engineer"){
+            if(team[i].getRole() == "Engineer"){
                 teamSec += 
-                `<section class="member">
+                `<section class="member card col-4 mt-4 m-3">
                     <h1>Engineer</h1>
                     <h1>Name: ${team[i].name}</h1>
                     <h2>id: ${team[i].id}</h2>
-                    <h2>Email: ${team[i].email}</h2>
-                    <h2>Github: ${team[i].github}</h2>
+                    <h2>Email: <a href="mailto:${team[i].email}">${team[i].email}</a></h2>
+                    <h2>Github: <a href="https://github.com/${team[i].github}">${team[i].github}</a></h2>
                 </section>`
             }
             else{
                 teamSec += 
-                `<section class="member">
+                `<section class="member card col-4 mt-4 m-3">
                     <h1>Intern</h1>
                     <h1>Name: ${team[i].name}</h1>
                     <h2>id: ${team[i].id}</h2>
-                    <h2>Email: ${team[i].email}</h2>
+                    <h2>Email: <a href="mailto:${team[i].email}">${team[i].email}</a></h2>
                     <h2>School: ${team[i].school}</h2>
                 </section>`
             }
@@ -129,19 +129,28 @@ function mainMenu(){
           <meta charset="UTF-8" />
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link rel="stylesheet" href="./style.css"/>
           <title>Team Generator</title>
         </head>
         <body>
-            <section class="member">
-                <h1>${manager.name}</h1>
-                <h2>${manager.id}</h2>
-                <h2>${manager.email}</h2>
-                <h2>${manager.officeNumber}</h2>
-            </section>`+teamSec+`</body>
+            <div class="workBox">
+                <div class="title">
+                    My Team
+                </div>
+                <section class="member card col-4 mt-4 m-3">
+                    <h1>Manager</h1>
+                    <h1>Name: ${manager.name}</h1>
+                    <h2>Id: ${manager.id}</h2>
+                    <h2>Email: ${manager.email}</h2>
+                    <h2>Office Number: ${manager.officeNumber}</h2>
+                </section>
+                ${teamSec}
+            </div>
+        </body>
       </html>`
 
 
-        fs.writeFile('index.html', skelly, (err) =>
+        fs.writeFile('dist/index.html', skelly, (err) =>
         err ? console.log(err) : console.log('Successfully created index.html!')
         );
     }
