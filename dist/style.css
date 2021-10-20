@@ -1,0 +1,33 @@
+body{
+    margin: 0 0;
+}
+
+.member{
+    border: 1px solid black;
+    width: 500px;
+    border-radius: 5px;
+}
+
+.member > h1{
+    background-color: blue;
+    color:white;
+    text-align: center;
+}
+
+.title{
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    width: 100%;
+    background-color: red;
+    font-size: xx-large;
+    height: 100px;
+    line-height: 100px;
+}
+
+.workBox{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
